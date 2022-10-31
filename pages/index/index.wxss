@@ -1,0 +1,217 @@
+page{
+  background: #000;
+}
+.container{
+  padding:0 30rpx;
+}
+.header{
+  display: flex;
+}
+.h_item{
+  width: 50%;
+}
+.h_item image{
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+}
+.h_item text{
+  color: #fff;
+  font-size: 60rpx;
+  vertical-align: middle;
+}
+.content{
+  text-align: center;
+  height: 1000rpx;
+  /* background: #f00; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content image{
+  width: 100%;
+  height: 700rpx;
+  
+}
+.footer{
+  display: flex;
+  height: 200rpx;
+  position: fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.footer view{
+  width: 33.333%;
+}
+.flashlight image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.footer_txt{
+  text-align: center;
+}
+.footer_txt text{
+  font-size: 30rpx;
+  color: #fff;
+  display: block;
+}
+.setting{
+  text-align: right;
+}
+.setting image{
+  width: 100rpx;
+  height: 100rpx;
+}
+/* 弹出层 */
+.pop_layer{
+  position: fixed;
+  top:0;
+  left:0;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.vioce{
+ padding-top: 50rpx;
+  display: block; 
+  /* background: #fff; */
+  width: 290rpx;
+}
+.scroll-view {
+  height: 100%;
+}
+.pop_container{
+  padding:50rpx 30rpx;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+.pop_layer .close{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/close.png') no-repeat center center;
+  background-size: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  position: fixed;
+}
+.pop_container{
+  margin-top: 92rpx;
+}
+.pop_pro{
+  margin-bottom: 60rpx;
+}
+.pop_pro .title{
+  color: #fff;
+  font-size: 32rpx;
+  display: block;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #fff;
+  margin-bottom: 37rpx;
+}
+.pop_item{
+  display: flex;
+}
+.buy{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/buy.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.reduction{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/restore.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.day{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/data.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.pray{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/prayer.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.num{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/invisible.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.fish{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/fish.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.infinite{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/infinite.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.frog{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/frog.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.soundon{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/soundon.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.vibrate{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/vibrate.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.animation{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/animation.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.share{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/share.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.feedback{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/feedback.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.review{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/setting/review.png') no-repeat left center;
+  background-size: 80rpx;
+}
+.pop_item .txt{
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 100rpx;
+  font-size: 34rpx;
+}
+.pop_item .price{
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  flex: 1;
+  display: block;
+  text-align: right;
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/indicator.png') no-repeat right center;
+  background-size: 80rpx;
+  padding-right: 50rpx;
+  font-size: 35rpx;
+}
+.checkbox{
+  flex: 1;
+  text-align: right;
+  padding-top: 30rpx;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 点击图片css动画效果 */
+@-webkit-keyframes ripple{
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    background-color: transparent;
+    }
+}
+@-webkit-keyframes rotate{
+  100%{
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}

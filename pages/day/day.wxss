@@ -1,0 +1,80 @@
+page{
+  background: #000;
+  color: #fff;
+}
+.header{
+  display: flex;
+}
+.total{
+  text-align: center;
+  display: block;
+  /* font-weight: bold; */
+}
+.h_item{
+  display: block;
+  width: 50%;
+  text-align: center;
+  font-size: 62rpx;
+}
+.icon1{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_fish.png') no-repeat top center;
+  background-size: 100rpx;
+  padding-top: 100rpx;
+}
+.icon2{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_coin.png') no-repeat top center;
+  background-size: 100rpx;
+  padding-top: 100rpx;
+}
+.calendar {
+  background: #000!important;
+  --calendar-height: 450px;
+  --calendar-background: #000;
+  --calendar-color: #fff;
+}
+.van-calendar header{
+  color: #fff;
+  background: #000;
+}
+.van-calendar__body{
+  background: #000;
+
+}
+.van-calendar__month-mark{
+  display: none;
+}
+.van-calendar__day{
+  background: #0d0d0d;
+  border-radius: 50%;
+  height: 110rpx!important;
+  margin-bottom: 10rpx
+}
+.van-calendar__selected-day{
+  border-radius: 50%!important;
+  height: 110rpx!important;
+  color: #000!important;
+}
+.van-calendar__header-title{
+  display: none!important;
+  height: 0!important;
+  visibility: hidden;
+}
+.day_bottom{
+  display: flex;
+ 
+}
+.day_item{
+  width: 50%;
+  text-align: center;
+}
+.day_num{
+  display: flex;
+}
+.day_num text{
+  display: block;
+  width: 50%;
+  font-size: 60rpx;
+}
+.day_num text:first-child{
+
+}

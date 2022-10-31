@@ -1,0 +1,26 @@
+/* pages/fish/fish.wxss */
+page{
+  background: #000;
+}
+.container{
+  padding:40rpx 30rpx;
+}
+.close{
+  /* background: #fff; */
+  color: #fff;
+  width: 80rpx;
+  height: 80rpx;
+  display: block;
+}
+.item{
+  color: #fff;
+  padding:0 40rpx;
+  height: 100rpx;
+  background:url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/radiooff.png') no-repeat right center;
+  background-size: 50rpx;
+  line-height: 100rpx;
+}
+.active{
+  background:url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/radioon.png') no-repeat right center;
+  background-size: 50rpx;
+}

@@ -1,0 +1,6 @@
+<view class="container">
+  <view class="head">
+     <text class="close"></text>
+     <text class="add"></text>
+  </view>
+</view>

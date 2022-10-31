@@ -1,0 +1,24 @@
+/* pages/prayer/prayer.wxss */
+page{
+  background: #000;
+}
+.container{
+  padding:0 30rpx;
+}
+.head{
+  display: flex;
+}
+.head .close{
+  background:url(https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/close.png) no-repeat left center;
+  background-size: 80rpx;
+  display: block;
+  width: 50%;
+  height: 80rpx;
+}
+.head .add{
+  background:url(https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/add.png) no-repeat right center;
+  background-size: 80rpx;
+  display: block;
+  width: 50%;
+  height: 80rpx;
+}

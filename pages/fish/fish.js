@@ -25,9 +25,17 @@ Page({
    */
   onLoad(options) {
       let fish=wx.getStorageSync('fish');
-      this.setData({
-        num:fish
-      })
+    
+      if(fish){
+        this.setData({
+          num:fish
+        })
+      }else{
+        this.setData({
+          num:'1'
+        })
+      }
+     
   },
 
   /**

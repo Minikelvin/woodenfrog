@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" catchtouchmove="false">
   <view class="header">
     <view class="h_item">
       <image style="{{rotateStyle}}" src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_fish.png"></image>
@@ -7,11 +7,11 @@
     </view>
     <view class="h_item">
       <image src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_coin.png"></image>
-      <text>{{coins}}</text>
+      <text>{{flogNum}}</text>
     </view>
   </view>
   <view class="content"  bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
-    <image bindtap="bindClick" animation="{{sacleAnimation}}"  src="{{flogImg}}"></image>
+    <image class="animated" class="{{animateName}}" src="{{flogImg}}"></image>
     <!-- style="{{scaleStyle}}"  -->
   </view>
   <view class="footer">
@@ -76,7 +76,7 @@
          <text class="title">木鱼</text>
          <view class="pop_item" bindtap="goFish">
           <view class="txt fish">鱼声(共11种)</view>
-          <text class="price">第{{fishTxt}}种</text>
+          <text class="price">第{{fishTxt || '1'}}种</text>
          </view>
          <view class="pop_item">
           <view class="txt infinite">自动敲击</view>
@@ -94,7 +94,7 @@
          <text class="title">青蛙</text>
          <view class="pop_item" bindtap="goFrog">
           <view class="txt frog">蛙声(共6种)</view>
-          <text class="price">第{{frogTxt}}种</text>
+          <text class="price">第{{frogTxt || '1'}}种</text>
          </view>
       </view>
       <view class="pop_pro">

@@ -20,10 +20,16 @@ Page({
    */
   onLoad(options) {
       let num=wx.getStorageSync('flog');
-      console.log(num);
-      this.setData({
-        num:num
-      })
+      if(num){
+        this.setData({
+          num:num
+        })
+      }else{
+        this.setData({
+          num:'1'
+        })
+      }
+     
   },
   close(){
     wx.navigateTo({

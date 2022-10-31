@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    animateName: '',
+    isAnimated: false,
     flashOpt: "off",
     device: 'back',
     checked: false,
@@ -15,7 +17,7 @@ Page({
     flash: 0,
     nowDay: '',
     week: '',
-    coins: 0,
+    flogNum: 0,
     sacleAnimation: {},
     rotateAnimation: {},
     flogImg: 'https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/frog/frog_alpha/frog_alpha_0.png',
@@ -72,44 +74,84 @@ Page({
 
   },
   touchStart: function (e) {
-    // console.log(e);
     let sx = e.touches[0].pageX
     let sy = e.touches[0].pageY
-    this.data.touchS = [sx, sy]
+    this.setData({
+      touchS: [sx,sy]
+    })
   },
   touchMove: function (e) {
     let sx = e.touches[0].pageX;
     let sy = e.touches[0].pageY;
     this.data.touchE = [sx, sy]
+    this.setData({
+      touchE: [sx, sy]
+    })
   },
-  onShow(){
-    console.log('初始动画实例');
-    this.animation=wx.createAnimation({
-      delay: 200,
-      timingFunction:'linear',
-      success:function(res){
-         console.log(res);
-      }
-    }) 
+  touchEnd(e){
+    let vm = this,
+        startX = vm.data.touchS[0],
+        startY = vm.data.touchS[1],
+        endX = vm.data.touchE[0],
+        endY = vm.data.touchE[1]
+    if(endX == 0 && endY == 0){
+      console.log('点击')
+      this.bindClick()
+    } else if(endX - startX > 20){
+      console.log('向右')
+      this.slide()
+    } else if(endX - startX < -20) {
+      console.log('向左')
+      this.slide()
+    }else if(endY - startY > 20){
+      console.log('向下')
+      this.slide()
+    }else if(endY - startY < -20){
+      console.log('向上')
+      this.slide()
+    }
+    vm.setData({
+      touchE: [0,0]
+    })
+  },
+  // 刮一刮音频
+  slide(){
+    let _this=this;
+    if(_this.data.isAnimated){return};
+    let fish = wx.getStorageSync('fish');
+    const innerAudioContext = wx.createInnerAudioContext();
+    fish ? innerAudioContext.src = this.laodFish() : innerAudioContext.src = this.data.fishSound;
+    innerAudioContext.src=this.laodFish();
+    innerAudioContext.play();
+    this.setData({flogNum:this.data.flogNum+1,animateName:'heartBeat',isAnimated:true});
+    var time=setTimeout(()=>{
+      _this.setData({
+        isAnimated:false,
+        animateName:''
+      })
+    },35)
   },
   bindClick() {
     let _this = this;
+    let fish = wx.getStorageSync('fish');
+    if(_this.data.isAnimated) {return }
     // 加载音频
     const innerAudioContext = wx.createInnerAudioContext();
+    fish ? innerAudioContext.src = this.laodFish() : innerAudioContext.src = this.data.fishSound;
     innerAudioContext.src = this.laodFish();
     innerAudioContext.play();
     
-    this.animation.scale(0).step()
     this.setData({
       flash:this.data.flash+1,
-      sacleAnimation:this.animation.export()
+      animateName: 'heartBeat',
+      isAnimated: true
     })
     var timer=setTimeout(()=>{
-      _this.animation.scale(1.6).step()
-      this.setData({
-        sacleAnimation:this.animation.export()
+      _this.setData({
+        isAnimated: false,
+        animateName: ''
       })
-    },1000)
+    },35)
 
     // const animation = wx.createAnimation({
     //   delay: 1000,
@@ -146,19 +188,6 @@ Page({
       week: week
     })
   },
-  // touchEnd: function (e) {
-  //   let start = this.data.touchS
-  //   let end = this.data.touchE
-  //   console.log(start, '上划')
-  //   // console.log(end,'下滑')
-  //   if (start[0] < end[0] - 50) {
-  //     console.log('右滑')
-  //   } else if (start[0] > end[0] + 50) {
-  //     console.log('左滑')
-  //   } else {
-  //     console.log('静止')
-  //   }
-  // },
   goFish() {
     wx.navigateTo({
       url: '../fish/fish',

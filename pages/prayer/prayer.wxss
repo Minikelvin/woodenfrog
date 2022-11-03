@@ -22,3 +22,43 @@ page{
   width: 50%;
   height: 80rpx;
 }
+.list-box{
+  color: #fff;
+}
+.list-box{
+  width: 100%;
+  overflow: hidden;
+}
+.list-row{
+  padding-left: 30rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  /* border-bottom: 1rpx solid #e5e5e5; */
+  position: relative;
+  /* background-color: white; */
+  white-space: nowrap;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+}
+.title{
+  display: inline-block;
+  width: 100%;
+}
+.del-bnt{
+  display: inline-block;
+  background-color: red;
+  color: white;
+  width: 200rpx;
+  text-align: center;
+  height: 100%;
+}
+.touch-move-active{
+  -webkit-transform: translateX(-100px);
+  transform: translateX(-100px);
+}
+.list-row{
+  background: url(https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/indicator.png) no-repeat right center;
+  background-size: 80rpx;
+}

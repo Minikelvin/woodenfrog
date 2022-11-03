@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="head">
+    <text class="back" bindtap="goBack"></text>
+    <text class="title">祈福语</text>
+    <text class="save" bindtap="save"></text>
+  </view>
+  <view class="saveData">
+      <input bindinput="getData" value="{{defaultItem}}" type="text"/>
+  </view>
+</view>

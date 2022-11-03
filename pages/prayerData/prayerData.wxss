@@ -1,0 +1,46 @@
+/* pages/prayerData/prayerData.wxss */page{
+  background: #000;
+}
+.container{
+  padding:0 30rpx;
+}
+.head{
+  display: flex;
+}
+.head .back{
+  background:url(https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/back.png) no-repeat left center;
+  background-size: 80rpx;
+  display: block;
+  /* width: 50%; */
+  width: 80rpx;
+  height: 80rpx;
+}
+.head .save{
+  background:url(https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/save.png) no-repeat right center;
+  background-size: 80rpx;
+  display: block;
+  /* width: 50%; */
+  width: 80rpx;
+  height: 80rpx;
+}
+.title{
+  color: #fff;
+  display: block;
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 35rpx;
+}
+.saveData{
+  margin-top: 100rpx;
+  display: flex;
+  justify-content: center;
+}
+.saveData input{
+  border-bottom: 1rpx solid #fff;
+  display: block;
+  color: #fff;
+  text-align: center;
+  font-size: 40rpx;
+  padding-bottom: 20rpx;
+}

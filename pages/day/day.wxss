@@ -8,6 +8,7 @@ page{
 .total{
   text-align: center;
   display: block;
+  padding-top: 80rpx;
   /* font-weight: bold; */
 }
 .h_item{
@@ -77,4 +78,13 @@ page{
 }
 .day_num text:first-child{
 
+}
+.close{
+  background: url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/close.png') no-repeat center center;
+  background-size: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  position: fixed;
+  top:0;
 }

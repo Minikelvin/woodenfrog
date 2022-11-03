@@ -5,7 +5,8 @@
     "pages/day/day",
     "pages/fish/fish",
     "pages/frog/frog",
-    "pages/prayer/prayer"
+    "pages/prayer/prayer",
+    "pages/prayerData/prayerData"
   ],
   "window":{
     "backgroundTextStyle":"light",

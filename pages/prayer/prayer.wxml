@@ -1,6 +1,13 @@
 <view class="container">
   <view class="head">
-     <text class="close"></text>
-     <text class="add"></text>
+    <text class="close" bindtap="back"></text>
+    <text class="add" bindtap="jumpPrayerData"></text>
   </view>
+  <view class="list-box">
+    <view class="list-row {{delIndex === index ? 'touch-move-active' : ''}}" wx:for="{{listData}}" bindtap="jumpPrayerPage" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-name="{{item}}" wx:key="index" >
+      <view class="title">{{item}}</view>
+      <view class="del-bnt" catchtap="delItem" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+
 </view>

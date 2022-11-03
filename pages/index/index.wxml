@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container" catchtouchmove="false">
-  <view class="header">
+  <view class="header" wx:if="{{hideHeadNumber}}">
     <view class="h_item">
       <image style="{{rotateStyle}}" src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_fish.png"></image>
       <text>{{flash}}</text>
@@ -11,13 +11,14 @@
     </view>
   </view>
   <view class="content"  bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+     <view style='position: absolute;color: #fff;font-size: 40rpx;top:20%;opacity: 0;' class="{{animateMove}}">{{moveUpName}}</view>
     <image class="animated" class="{{animateName}}" src="{{flogImg}}"></image>
     <!-- style="{{scaleStyle}}"  -->
   </view>
   <view class="footer">
     <view class="flashlight">
       <view class="lightBox">
-        <image bindtap="checkOpts" data-num="1" src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/flashlightoff.png"></image>
+        <image bindtap="openflashlight" data-num="1" src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/flashlightoff.png"></image>
         <view class="conversation-list-area">
           <camera  device-position="{{device}}" flash="{{flashOpt}}" binderror="error" style="width: 100%; height: 100%;visibility: hidden;"></camera>
         </view>
@@ -39,15 +40,15 @@
   <scroll-view scroll-y="{{showModalStatus?'true':'false'}}" style="height:{{windowHeight}}px" class="pop_container">
       
       <view class="pop_pro">
-         <text class="title">SAIWEN STUDIO</text>
-         <view class="pop_item">
+         <!-- <text class="title">SAIWEN STUDIO</text> -->
+         <!-- <view class="pop_item">
           <view class="txt buy">购买木鱼青蛙专业版</view>
           <text class="price">￥12</text>
          </view>
          <view class="pop_item">
           <view class="txt reduction">还原已购买的内容</view>
           <text class="price"></text>
-         </view>
+         </view> -->
       </view>
       <view class="pop_pro">
          <text class="title">个性化</text>
@@ -55,7 +56,7 @@
           <view class="txt day">每日数据</view>
           <text class="price" bindtap="goDay"></text>
          </view>
-         <view class="pop_item">
+         <view class="pop_item" bindtap="jumpPrayer"> 
           <view class="txt pray">祈福语</view>
           <text class="price"></text>
          </view>
@@ -63,7 +64,7 @@
           <view class="txt num">隐藏主屏数字</view>
           <view class="checkbox">
             <van-switch
-            checked="{{ checked }}" bind:change="onChange"
+            checked="{{ checkHiddenNumber }}" bind:change="hideNumber"
               active-color="#1AAD19"
               inactive-color="#131314"
               size="28px"
@@ -78,7 +79,7 @@
           <view class="txt fish">鱼声(共11种)</view>
           <text class="price">第{{fishTxt || '1'}}种</text>
          </view>
-         <view class="pop_item">
+         <!-- <view class="pop_item">
           <view class="txt infinite">自动敲击</view>
           <view class="checkbox">
             <van-switch
@@ -88,7 +89,7 @@
               size="28px"
             />
           </view>
-         </view>
+         </view> -->
       </view>
       <view class="pop_pro">
          <text class="title">青蛙</text>
@@ -99,15 +100,15 @@
       </view>
       <view class="pop_pro">
          <text class="title">设置</text>
-         <view class="pop_item">
+         <!-- <view class="pop_item">
           <view class="txt soundon" style="flex:1">声音大小</view>
           <view class="vioce">
             <van-slider value="50" bar-height="4px" 
             inactive-color='#272727'
             active-color="#00cb47" />
           </view>
-         </view>
-         <view class="pop_item">
+         </view> -->
+         <!-- <view class="pop_item">
           <view class="txt vibrate">振动反馈</view>
           <view class="checkbox">
             <van-switch
@@ -117,12 +118,12 @@
               size="28px"
             />
           </view>
-         </view>
+         </view> -->
          <view class="pop_item">
           <view class="txt animation">增强动效</view>
           <view class="checkbox">
             <van-switch
-            checked="{{ checked }}" bind:change="onChange"
+            checked="{{ animateCheck }}" bind:change="animationChange"
               active-color="#1AAD19"
               inactive-color="#131314"
               size="28px"
@@ -130,17 +131,18 @@
           </view>
          </view>
          <view class="pop_item">
-          <view class="txt share">分享木鱼青蛙</view>
-          <text class="price"></text>
+          <button style="flex:1;text-align: left;" class="txt share" open-type="share">分享木鱼青蛙</button>
+          <!-- <view ></view> -->
+          <text class="price" style="flex: none;"></text>
          </view>
-         <view class="pop_item">
+         <!-- <view class="pop_item">
           <view class="txt feedback">用户反馈</view>
           <text class="price">v1.0</text>
          </view>
          <view class="pop_item">
           <view class="txt review">给我们的评价</view>
           <text class="price"></text>
-         </view>
+         </view> -->
       </view>
       <view style="height: 40rpx;"></view>
   </scroll-view>

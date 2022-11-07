@@ -88,3 +88,7 @@ page{
   position: fixed;
   top:0;
 }
+.day-item{
+  /* background: #f00;
+  color: #fff; */
+}

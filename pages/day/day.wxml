@@ -3,16 +3,34 @@
   <text class="total">总计</text>
   <view class="header">
     <view class="h_item icon1">
-      2
+     {{totalFish}}
     </view>
     <view class="h_item icon2">
-      2
+     {{totalFrog}}
     </view>
   </view>
   <view class="main">
-    <van-calendar title="日历" poppable="{{ false }}" color='#fff' show-confirm="{{ false }}" class="calendar" />
+    <van-calendar title="日历" 
+      poppable="{{ false }}" 
+      color='#fff'
+      show-confirm="{{ false }}"
+      min-date="{{ minDate }}"
+      max-date="{{ maxDate }}"
+      default-date="{{maxDate}}"
+      formatter="{{ formatter }}"
+      bind:confirm="selectDate"
+      class="calendar"
+       />
+
+       <!-- <van-calendar 
+       min-date="{{minDaminDatete}}"
+       show="{{ show }}"
+      max-date="{{maxDate}}"
+      default-date="{{minDate}}" 
+      formatter="{{ formatter }}" /> -->
+
   </view>
-  <view class="day_bottom">
+  <!-- <view class="day_bottom">
     <view class="month day_item">
       <text>月</text>
       <view class="day_num">
@@ -27,5 +45,5 @@
         <text class="icon2">2</text>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

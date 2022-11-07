@@ -1,11 +1,25 @@
 // pages/day/day.js
+var dayjs=require('dayjs')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      start:2,
+      dateCount: 60,
+      minDate: new Date(2022, 0, 1).getTime(),
+      maxDate: '',
+      totalFish:'50',
+      totalFrog:'4',
+      listData:[
+          {'date':'2022-08-01','fish':'50','frog':'900'},
+          {'date':'2022-08-08','fish':'50','frog':'90'},
+          {'date':'2022-09-01','fish':'50','frog':'90'},
+          {'date':'2022-08-11','fish':'50','frog':'90'},
+          {'date':'2022-08-13','fish':'50','frog':'90'},
+          {'date':'2022-10-01','fish':'50','frog':'900'}
+        ]
   },
 
   /**
@@ -13,6 +27,43 @@ Page({
    */
   onLoad(options) {
 
+    const date=new Date();
+    const now=date.getTime();
+
+    this.setData({
+      maxDate:now,
+      formatter:this.formatter.bind(this)
+    })
+    this.total();
+  },
+  // 总计
+  total(){
+    var sumFish=0,
+        sumFrog=0;
+    let data=wx.getStorageSync('data');
+    for(let i =0;i<data.length;i++){
+      sumFish+=parseInt(data[i].fish)
+      sumFrog+=parseInt(data[i].frog)      
+    }
+    this.setData({
+      totalFish:sumFish,
+      totalFrog:sumFrog
+    })
+  },
+  formatter(day){
+    const _day=dayjs(day.date).format('YYYY-MM-DD');
+    const data=wx.getStorageSync('data');
+    for(let i =0;i<data.length;i++){
+      if(_day==data[i].date){
+        day.topInfo=data[i].fish+'蛙'
+        day.bottomInfo=data[i].frog+'鱼';
+      }
+    }
+    day.className = 'day-item'
+    return day
+  },
+  selectDate(){
+    console.log('1');
   },
   closePop(){
     wx.navigateBack({

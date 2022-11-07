@@ -449,14 +449,14 @@ Page({
   // 记录本地 每天 每月点击次数
   recordData(){
     let obj={}
-    obj.a=wx.getStorageSync('flshNum');
-    obj.b=wx.getStorageSync('flogNum');
-    let data={};
-    let month=dayjs().format('YYYY-MM');
+    let arr=[];
+    // let month=dayjs().format('YYYY-MM');
     let day=dayjs().format('YYYY-MM-DD');
-    data = {[month]:{[day]:obj}}
-    console.log(data);
-    wx.setStorageSync('data', data)
+    obj.date=day;
+    obj.fish=wx.getStorageSync('flshNum');
+    obj.frog=wx.getStorageSync('flogNum');
+    arr.push(obj)
+    wx.setStorageSync('data', arr)
   }
 
 })

@@ -11,6 +11,9 @@ page{
   width: 80rpx;
   height: 80rpx;
   display: block;
+  position: fixed;
+  top:0;
+  left:30rpx;
 }
 .item{
   color: #fff;
@@ -19,6 +22,9 @@ page{
   background:url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/radiooff.png') no-repeat right center;
   background-size: 50rpx;
   line-height: 100rpx;
+}
+.listData{
+  margin-top: 50rpx;
 }
 .active{
   background:url('https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/radioon.png') no-repeat right center;

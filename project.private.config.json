@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/prayerData/prayerData",
+          "pathName": "pages/day/day",
           "query": "",
           "launchMode": "default",
           "scene": null

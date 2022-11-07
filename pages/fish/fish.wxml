@@ -1,6 +1,10 @@
 <view class="container">
   <image bindtap="close" src='https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/common/close.png' class="close"></image>
-  <view class='item {{item.id==num ? "active":""}}' wx:for="{{list}}" wx:key="index" data-num="{{item.id}}" bindtap="clickRadio">
+  <view class="listData">
+
+    <view class='item {{item.id==num ? "active":""}}' wx:for="{{list}}" wx:key="index" data-num="{{item.id}}" bindtap="clickRadio">
       <view data-num="{{item.id}}"  class="txt">{{item.id}}.</view>
   </view>
+  </view>
+
 </view>

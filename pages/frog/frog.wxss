@@ -11,6 +11,12 @@ page{
   width: 80rpx;
   height: 80rpx;
   display: block;
+  position: fixed;
+  top:0;
+  left:30rpx;
+}
+.listData{
+  margin-top: 50rpx;
 }
 .item image{
   width: 250rpx;

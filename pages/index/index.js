@@ -2,7 +2,7 @@
 // 获取应用实例
 const app = getApp()
 const dayjs = require("dayjs");
-var dateData=require("../../utils/date.js");
+// var dateData=require("../../utils/date.js");
 Page({
   data: {
     animateName: '',
@@ -17,10 +17,10 @@ Page({
     show: false,
     touchS: [0, 0],
     touchE: [0, 0],
-    flash: 0,
+    fishNum: 0,
     nowDay: '',
     week: '',
-    flogNum: 0,
+    frogNum: 0,
     sacleAnimation: {},
     rotateAnimation: {},
     flogImg: 'https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/frog/frog_alpha/frog_alpha_0.png',
@@ -98,7 +98,7 @@ Page({
   },
   onLoad(options) {
     
-    this.recordData()
+    this.getRecords()
     // 加载json
     this.getJson();
     //加载蛙声图片 
@@ -132,15 +132,6 @@ Page({
   loadPrayerData() {
     let data = wx.getStorageSync('listArr') || [];
     this.prayerData = data;
-    /**if (data) {
-        this.setData({
-            moveUpName: data
-        })
-    } else {
-        this.setData({
-            moveUpName: '功德+1'
-        })
-    }**/
   },
   // 打开手电筒
   openflashlight(e) {
@@ -197,10 +188,10 @@ Page({
     })
   },
   loadHeadData(){
-    this.setData({
-      flash:wx.getStorageSync('flshNum'),
-      flogNum:wx.getStorageSync('flogNum')
-    })
+    // this.setData({
+    //   flash:+wx.getStorageSync('fishNum'),
+    //   frogNum:+wx.getStorageSync('frogNum')
+    // })
   },
   // 刮一刮音频
   slide() {
@@ -218,19 +209,19 @@ Page({
       _this.setData({
         animateName: '',
         animateMove: '',
-        flogNum: this.data.flogNum + 1,
+        frogNum: this.data.frogNum + 1,
       })
     } else {
       if (_this.data.isAnimated) {
         return
       };
       this.setData({
-        flogNum: this.data.flogNum + 1,
+        frogNum: this.data.frogNum + 1,
         animateName: 'heartBeat',
         animateMove: 'textMove',
         isAnimated: true
       });
-      wx.setStorageSync('flogNum', this.data.flogNum)
+      // wx.setStorageSync('frogNum', this.data.frogNum)
 
       var time = setTimeout(() => {
         _this.setData({
@@ -241,14 +232,15 @@ Page({
       }, 35)
 
     }
-    let count = this.data.flogNum
+    let count = this.data.frogNum
     if (this.prayerData.length > 0) {
       const str = this.prayerData[count % this.prayerData.length];
       this.setData({
         moveUpName: str
       })
     }
-    this.recordData();
+    // console.log(this.data)
+    this.saveRecords();
   },
   // 点击敲打木鱼
   bindClick() {
@@ -299,7 +291,7 @@ Page({
         moveUpName: str
       })
     }
-    this.recordData();
+    this.saveRecords();
   },
   getNowData() {
     let date = new Date();
@@ -447,16 +439,38 @@ Page({
     })
   },
   // 记录本地 每天 每月点击次数
-  recordData(){
-    let obj={}
-    let arr=[];
-    // let month=dayjs().format('YYYY-MM');
-    let day=dayjs().format('YYYY-MM-DD');
-    obj.date=day;
-    obj.fish=wx.getStorageSync('flshNum');
-    obj.frog=wx.getStorageSync('flogNum');
-    arr.push(obj)
-    wx.setStorageSync('data', arr)
+  saveRecords(){
+    let allDatas = this.data.allDatas || {}, 
+        now = dayjs().format('YYYY-MM-DD')
+
+    allDatas[now] = {
+      fish: this.data.fishNum || this.data.flash,
+      frog: this.data.frogNum
+    }
+
+    wx.setStorageSync('data', allDatas)
+    
+  },
+  getRecords(){
+    let obj = {} , 
+        allDatas = wx.getStorageSync('data') || {},
+        now = dayjs().format('YYYY-MM-DD'),
+        fishNum = 0,
+        frogNum = 0
+
+    if(allDatas[now] != void 0){
+      fishNum = +allDatas[now]['fish']
+      frogNum = +allDatas[now]['frog']
+    }
+    this.setData({
+      allDatas,
+      flash: fishNum,
+      frogNum
+    })
+    // obj.fish=+wx.getStorageSync('flshNum');
+    // obj.frog=+wx.getStorageSync('frogNum');
+    // arr.push(obj)
+    // wx.setStorageSync('data', arr)
   }
 
 })

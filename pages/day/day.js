@@ -41,9 +41,13 @@ Page({
     var sumFish=0,
         sumFrog=0;
     let data=wx.getStorageSync('data');
-    for(let i =0;i<data.length;i++){
-      sumFish+=parseInt(data[i].fish)
-      sumFrog+=parseInt(data[i].frog)      
+    // console.log(data);
+
+    for(let i in data){
+      if(data.hasOwnProperty(i)){
+        sumFish+=parseInt(data[i].fish)
+        sumFrog+=parseInt(data[i].frog)  
+      }
     }
     this.setData({
       totalFish:sumFish,
@@ -53,11 +57,9 @@ Page({
   formatter(day){
     const _day=dayjs(day.date).format('YYYY-MM-DD');
     const data=wx.getStorageSync('data');
-    for(let i =0;i<data.length;i++){
-      if(_day==data[i].date){
-        day.topInfo=data[i].fish+'蛙'
-        day.bottomInfo=data[i].frog+'鱼';
-      }
+    if(data[_day] != void 0){
+      day.topInfo= data[_day]['fish']+'青蛙'
+      day.bottomInfo= data[_day]['frog']+'木鱼'
     }
     day.className = 'day-item'
     return day

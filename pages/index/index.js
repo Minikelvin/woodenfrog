@@ -1,6 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
+const dayjs = require("dayjs");
 var dateData=require("../../utils/date.js");
 Page({
   data: {
@@ -97,7 +98,6 @@ Page({
   },
   onLoad(options) {
     
-    console.log(dateData);
     this.recordData()
     // 加载json
     this.getJson();
@@ -111,6 +111,7 @@ Page({
     this.loadPrayerData();
     this.loadAnimation();
     // 加载动效状态
+    this.loadHeadData();
   },
   // 显示与隐藏动效开关
   loadAnimation() {
@@ -195,6 +196,12 @@ Page({
       touchE: [0, 0]
     })
   },
+  loadHeadData(){
+    this.setData({
+      flash:wx.getStorageSync('flshNum'),
+      flogNum:wx.getStorageSync('flogNum')
+    })
+  },
   // 刮一刮音频
   slide() {
     let _this = this;
@@ -223,6 +230,8 @@ Page({
         animateMove: 'textMove',
         isAnimated: true
       });
+      wx.setStorageSync('flogNum', this.data.flogNum)
+
       var time = setTimeout(() => {
         _this.setData({
           isAnimated: false,
@@ -239,6 +248,7 @@ Page({
         moveUpName: str
       })
     }
+    this.recordData();
   },
   // 点击敲打木鱼
   bindClick() {
@@ -270,6 +280,9 @@ Page({
         animateMove: 'textMove',
         isAnimated: true
       })
+ 
+      wx.setStorageSync('flshNum', this.data.flash)
+
       var timer = setTimeout(() => {
         _this.setData({
           isAnimated: false,
@@ -286,6 +299,7 @@ Page({
         moveUpName: str
       })
     }
+    this.recordData();
   },
   getNowData() {
     let date = new Date();
@@ -434,7 +448,15 @@ Page({
   },
   // 记录本地 每天 每月点击次数
   recordData(){
-   
+    let obj={}
+    obj.a=wx.getStorageSync('flshNum');
+    obj.b=wx.getStorageSync('flogNum');
+    let data={};
+    let month=dayjs().format('YYYY-MM');
+    let day=dayjs().format('YYYY-MM-DD');
+    data = {[month]:{[day]:obj}}
+    console.log(data);
+    wx.setStorageSync('data', data)
   }
 
 })

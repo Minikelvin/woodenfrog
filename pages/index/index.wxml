@@ -3,11 +3,11 @@
   <view class="header" wx:if="{{hideHeadNumber}}">
     <view class="h_item">
       <image style="{{rotateStyle}}" src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_fish.png"></image>
-      <text>{{flash}}</text>
+      <text>{{flash || 0}}</text>
     </view>
     <view class="h_item">
       <image src="https://woodenfrog.oss-cn-hangzhou.aliyuncs.com/property/lucky_coin.png"></image>
-      <text>{{flogNum}}</text>
+      <text>{{flogNum || 0}}</text>
     </view>
   </view>
   <view class="content"  bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">

@@ -100,7 +100,7 @@ page{
   position: fixed;
 }
 .pop_container{
-  margin-top: 92rpx;
+  margin-top: 22rpx;
 }
 .pop_pro{
   margin-bottom: 60rpx;
@@ -219,7 +219,7 @@ page{
 /* 字体向上消失 */
 @keyframes textMove{
   from{
-    top:20%;
+    top:12%;
     opacity: 1;
   }
   to{
